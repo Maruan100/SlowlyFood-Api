@@ -12,6 +12,7 @@ const AticleSchema = Schema({
     title: String,
     category:String,
     description: String,
+    cantidad: String,
 });
 
 

@@ -17,6 +17,7 @@ const controller = {
       var valida_image_xl = !validator.isEmpty(params.image_xl);
       var validate_title = !validator.isEmpty(params.name);
       var validate_description = !validator.isEmpty(params.description);
+      var validate_cantidad = !validator.isEmpty(params.cantidad);
 
     } catch (err) {
       return res.status(400).send({
@@ -27,7 +28,7 @@ const controller = {
 
     if (valida_name && valida_category && validate_price && 
       valida_image && valida_image_xl && validate_title &&
-     validate_description) {
+     validate_description && validate_cantidad ) {
        
       let article = new ArticleModel();
 
@@ -38,6 +39,7 @@ const controller = {
       article.image_xl = params.image_xl;
       article.title = params.title;    
       article.description = params.description;
+      article.cantidad = params.cantidad;
 
       article.save((err, articleStored) => {
         if (err || !articleStored) {
