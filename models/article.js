@@ -7,9 +7,10 @@ const Schema = mongoose.Schema;
 const AticleSchema = Schema({
     name: String,
     price: Number,
-    date: { type: Date, default: Date.now},
     image: String,
+    image_xl: String,
     title: String,
+    category:String,
     description: String,
 });
 

@@ -10,8 +10,14 @@ const controller = {
     let params = req.body;
     //Validar datos
     try {
+      var valida_name = !validator.isEmpty(params.name);
+      var valida_category = !validator.isEmpty(params.category);
+      var validate_price = !validator.isEmpty(params.price);
+      var valida_image = !validator.isEmpty(params.image);
+      var valida_image_xl = !validator.isEmpty(params.image_xl);
       var validate_title = !validator.isEmpty(params.name);
-      var validate_content = !validator.isEmpty(params.price);
+      var validate_description = !validator.isEmpty(params.description);
+
     } catch (err) {
       return res.status(400).send({
         status: "error",
@@ -19,13 +25,18 @@ const controller = {
       });
     }
 
-    if (validate_title && validate_content) {
+    if (valida_name && valida_category && validate_price && 
+      valida_image && valida_image_xl && validate_title &&
+     validate_description) {
+       
       let article = new ArticleModel();
 
       article.name = params.name;
+      article.category = params.category;
       article.price = params.price;
       article.image = params.image;
-      article.title = params.title;
+      article.image_xl = params.image_xl;
+      article.title = params.title;    
       article.description = params.description;
 
       article.save((err, articleStored) => {
