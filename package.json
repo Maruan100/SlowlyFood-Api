@@ -4,8 +4,8 @@
   "description": "Api RESTful",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "build": "webpack"
   },
   "author": "M",
   "license": "ISC",
@@ -13,8 +13,10 @@
     "body-parser": "^1.19.0",
     "connect-multiparty": "^2.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.11",
-    "nodemon": "^1.19.4",
-    "validator": "^12.0.0"
+    "mongoose": "^5.13.7",
+    "validator": "^13.6.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
