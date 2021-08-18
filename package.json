@@ -4,8 +4,7 @@
   "description": "Api RESTful",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "webpack"
+    "start": "node index.js"
   },
   "author": "M",
   "license": "ISC",
