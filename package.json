@@ -4,6 +4,7 @@
   "description": "Api RESTful",
   "main": "src/app.js",
   "scripts": {
+    "test": "NODE_ENV=test mocha test/api.spec.js --exit",
     "start": "node src/app.js"
   },
   "author": "M",
@@ -18,5 +19,9 @@
   },
   "engines": {
     "node": "14.x"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.0",
+    "supertest": "^6.2.2"
   }
 }
