@@ -1,31 +1,28 @@
-'use strict'
+"use strict";
 
-const express = require('express');
+const express = require("express");
 
-const ArticleController = require('../controllers/articles');
+const ArticleController = require("../controllers/articles");
 
 const router = express.Router();
 
-const multipart = require('connect-multiparty');
-const md_upload = multipart({uploadDir: './upload/articles'});
+const multipart = require("connect-multiparty");
+const md_upload = multipart({ uploadDir: "./upload/articles" });
 
-//Routas utiles
+router.post("/save", ArticleController.saveArticles);
 
-//Routas para articulos
-router.post('/save',ArticleController.saveArticles);
+router.get("/articles/:last?", ArticleController.getArticles);
 
-router.get('/articles/:last?',ArticleController.getArticles);
+router.get("/article/:id", ArticleController.getArticleById);
 
-router.get('/article/:id',ArticleController.getArticleById);
+router.put("/article/:id", ArticleController.updateArticle);
 
-router.put('/article/:id',ArticleController.updateArticle);
+router.delete("/article/:id", ArticleController.deleteArticle);
 
-router.delete('/article/:id',ArticleController.deleteArticle);
+router.post("/upload-image/:id", md_upload, ArticleController.upload);
 
-router.post('/upload-image/:id',md_upload,ArticleController.upload);
+router.get("/get-image/:image", ArticleController.getImage);
 
-router.get('/get-image/:image',ArticleController.getImage);
-
-router.get('/search/:search',ArticleController.search);
+router.get("/search/:search", ArticleController.search);
 
 module.exports = router;
