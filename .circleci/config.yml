@@ -46,6 +46,7 @@ workflows:
   node-tests:
     jobs:
     - test
+    - build
     # Envs: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_ECR_ACCOUNT_URL
     - aws-ecr/build-and-push-image:
         repo: api-slowlyfood
@@ -54,7 +55,6 @@ workflows:
         path: .
         requires:
           - test
-    - build
     - aws-ecs/run-task:
         requires:
           - build
