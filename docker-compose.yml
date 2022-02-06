@@ -1,0 +1,34 @@
+version: '3'
+services:
+  api-slowlyfood:
+    container_name: api-slowlyfood
+    restart: always
+    build: ./
+    env_file: ./config/config.env
+    ports: 
+      - "8081:8081"
+    networks:
+      - slowlyfood-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=articles
+    ports: 
+      - "27017:27017"
+    networks:
+      - slowlyfood-app
+    volumes:
+      - mongo-data:/data/db  
+
+
+networks:
+  slowlyfood-app:
+    driver: bridge
+
+
+volumes:
+  mongo-data:
+    driver: local
