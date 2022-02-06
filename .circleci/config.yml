@@ -13,16 +13,14 @@ jobs:
       name: node/default
       tag: 14.15.1
     steps:
-    - checkout
     - node/install-packages:
         pkg-manager: npm
     - run:
         command: npm test
-      name: Run Mocha tests
-    steps:
-      - aws-cli/setup
-      - jq/install
-      - run:
+        name: Run Mocha tests
+    - aws-cli/setup
+    - jq/install
+    - run:
           name: Get cluster info
           command: |
             SERVICES_OBJ=$(aws ecs describe-services --cluster "${ECS_CLUSTER_NAME}" --services "${ECS_SERVICE_NAME}")
@@ -35,14 +33,14 @@ jobs:
             echo "export SUBNET_TWO=$SUBNET_TWO" >> $BASH_ENV
             echo "export SECURITY_GROUP_IDS=$SECURITY_GROUP_IDS" >> $BASH_ENV=$SECURITY_GROUP_IDS=$SECURITY_GROUP_IDS" >> $BASH_ENV" >> $BASH_ENV
             echo "export CLUSTER_NAME=$CLUSTER_NAME" >> $BASH_ENV
-      - run:
+    - run:
           name: Associate cluster
           command: |
             aws ecs put-cluster-capacity-providers \
               --cluster "${ECS_CLUSTER_NAME}" \
               --capacity-providers FARGATE FARGATE_SPOT  \
               --default-capacity-provider-strategy capacityProvider=FARGATE,weight=1 capacityProvider=FARGATE_SPOT,weight=1\                --region ${AWS_DEFAULT_REGION}
-      - aws-ecs/run-task:
+    - aws-ecs/run-task:
           cluster: $CLUSTER_NAME
           capacity-provider-strategy: capacityProvider=FARGATE,weight=1 capacityProvider=FARGATE_SPOT,weight=1
           launch-type: ""
