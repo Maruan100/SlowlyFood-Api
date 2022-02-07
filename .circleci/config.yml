@@ -31,6 +31,6 @@ workflows:
           requires:
             - aws-ecr/build-and-push-image
           family: "ECSApiSlowlyFood"
-          cluster-name: $CLUSTER_NAME
+          cluster-name: api-slowlyfood
           service-name: "DefaulService"
           container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_BRANCH}_${CIRCLE_SHA1}"
