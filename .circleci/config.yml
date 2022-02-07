@@ -22,7 +22,7 @@ workflows:
       # Envs: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, AWS_ECR_ACCOUNT_URL
       - aws-ecr/build-and-push-image:
           repo: api-slowlyfood
-          tag: "${CIRCLE_SHA1}"
+          tag: "latest,v0.1.${CIRCLE_BUILD_NUM}"
           dockerfile: Dockerfile
           path: .
           requires:
@@ -33,4 +33,4 @@ workflows:
           family: "ECSApiSlowlyFood"
           cluster-name: api-slowlyfood
           service-name: "DefaulService"
-          container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=api-slowlyfood-container,tag=latest,v0.1.${CIRCLE_BUILD_NUM}"
