@@ -37,5 +37,6 @@ workflows:
       - aws-ecs/update-task-definition:
           requires:
             - aws-ecs/deploy-service-update
+          container-env-var-updates: ""
           container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
           family: "ECSApiSlowlyFood"
