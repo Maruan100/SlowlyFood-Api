@@ -31,11 +31,11 @@ workflows:
           requires:
             - aws-ecr/build-and-push-image
           family: "ECSApiSlowlyFood"
-          cluster-name: api-slowlyfood-0
-          service-name: "DefaulService"
-          container-image-name-updates: "container=api-slowlyfood,tag=${CIRCLE_SHA1}"
+          cluster-name: "api-slowlyfood-cluster"
+          service-name: "api-slowlyfood-service"
+          container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
       - aws-ecs/update-task-definition:
           requires:
             - aws-ecs/deploy-service-update
-          container-image-name-updates: "container=api-slowlyfood,tag=${CIRCLE_SHA1}"
-          family: ECSApiSlowlyFood
+          container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
+          family: "ECSApiSlowlyFood"
