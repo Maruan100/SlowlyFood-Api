@@ -38,6 +38,6 @@ app.use((req, res, next) => {
   res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-app.use("/api", routes);
+app.use("/", routes);
 
 module.exports = app;
