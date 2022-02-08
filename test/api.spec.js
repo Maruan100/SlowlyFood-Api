@@ -5,7 +5,7 @@ const app = require('../src/app.js');
 describe("GET /articles", () => {
   it("should return articles list", (done) => {
     request(app)
-      .get("articles")
+      .get("/articles")
       .expect(200)
       .expect("Content-Type", /json/)
       .end((err) => {
