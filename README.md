@@ -11,3 +11,4 @@ SlowlyFood API REST
 - [Circle-CI](https://circleci.com/) *Easy tool for continuous integration and deploys, also have Orbs that provide easy interation with AWS*
 - [Amazon ECR](https://aws.amazon.com/es/ecr/) *To store my docker container and the different tag versions*
 - [Amazon ECS](https://aws.amazon.com/es/ecs/) *This tool create a cluster and deploy a instance of my container*
+- [Amazon CloudWatch](https://aws.amazon.com/es/cloudwatch/) *Because my instance is deployed in AWS I used Amazon CloudWatch for monitoring the app*
