@@ -34,9 +34,3 @@ workflows:
           cluster-name: "api-slowlyfood-cluster"
           service-name: "api-slowlyfood-service"
           container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
-      # - aws-ecs/update-task-definition:
-      #     requires:
-      #       - aws-ecs/deploy-service-update
-      #     container-env-var-updates: ""
-      #     container-image-name-updates: "container=api-slowlyfood-container,tag=${CIRCLE_SHA1}"
-      #     family: "ECSApiSlowlyFood"
