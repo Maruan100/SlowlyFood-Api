@@ -5,31 +5,15 @@ const controller = {
   saveArticles: (req, res) => {
     let params = req.body;
 
-    try {
-      var valida_name = !validator.isEmpty(params.name);
-      var valida_category = !validator.isEmpty(params.category);
-      var validate_price = !validator.isEmpty(params.price);
-      var valida_image = !validator.isEmpty(params.image);
-      var valida_image_xl = !validator.isEmpty(params.image_xl);
-      var validate_title = !validator.isEmpty(params.name);
-      var validate_description = !validator.isEmpty(params.description);
-      var validate_cantidad = !validator.isEmpty(params.cantidad);
-    } catch (err) {
-      return res.status(400).send({
-        status: "error",
-        message: "Faltan datos por enviar",
-      });
-    }
-
     if (
-      valida_name &&
-      valida_category &&
-      validate_price &&
-      valida_image &&
-      valida_image_xl &&
-      validate_title &&
-      validate_description &&
-      validate_cantidad
+      params.name &&
+      params.category &&
+      params.image &&
+      params.image_xl &&
+      params.price &&
+      params.title &&
+      params.description &&
+      params.cantidad
     ) {
       let article = new ArticleModel();
 

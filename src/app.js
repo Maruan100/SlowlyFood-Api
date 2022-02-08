@@ -6,8 +6,9 @@ const routes = require("./routes/article");
 const port = process.env.PORT || 8081;
 
 //MongoDB options
-const dbURI =
-  "mongodb+srv://1234:1234@slowlyfood.knt6b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const dbURI = process.env.NODE_ENV === "development"
+    ? "mongodb://mongo:27017/articles"
+    : "mongodb+srv://1234:1234@slowlyfood.knt6b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 const app = express();
