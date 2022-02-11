@@ -39,6 +39,6 @@ app.use((req, res, next) => {
   res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-app.use("/", routes);
+app.use("/api", routes);
 
 module.exports = app;
